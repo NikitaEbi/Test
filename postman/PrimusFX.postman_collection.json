@@ -1,0 +1,2234 @@
+{
+	"info": {
+		"_postman_id": "edd6edd8-cbc0-4168-934d-62c7af1fa4d2",
+		"name": "PrimusFX",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Test",
+			"item": [
+				{
+					"name": "return all information",
+					"item": [
+						{
+							"name": "info/ping",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5a610ec3-096d-4cc9-826a-8d8abb9c44fd",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 0560ADB4930DAA9EADBA8D81A45C7DDF",
+										"type": "text"
+									},
+									{
+										"key": "X-API-client",
+										"value": "mobile",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "ping",
+											"value": "test",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/{{api}}/info/ping",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"{{api}}",
+										"info",
+										"ping"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login/submit",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "38f45470-577e-4646-ae47-cba15975fcd6",
+										"exec": [
+											"var schema = {type: 'object', properties: {data:{type: 'object', properties: {type:{type: 'string'},userId:{type: 'number'},entityId:{type: 'number'},needTwoFactorCode:{type: 'boolean'},syncRunning:{type: 'string'},isDummyEntity:{type: 'boolean'},}},}};",
+											"",
+											"var data = pm.response.json();",
+											"",
+											"",
+											"pm.test('Schema is valid', function() {",
+											"  pm.expect(tv4.validate(data, schema)).to.be.true;",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer 0560ADB4930DAA9EADBA8D81A45C7DDF"
+									},
+									{
+										"key": "X-API-client",
+										"type": "text",
+										"value": "mobile"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userName",
+											"value": "{{login}}",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "text"
+										},
+										{
+											"key": "customerId",
+											"value": "{{currentId}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/{{api}}/login/submit",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"{{api}}",
+										"login",
+										"submit"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "beneficiaries",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "99bcbed4-baad-4b0c-92b8-39a4a18647ab",
+										"exec": [
+											"pm.environment.set(\"X-Page-Id\", postman.getResponseHeader(\"X-Page-Id\"));",
+											"",
+											"var schema = {",
+											"  type:\"object\",",
+											"  properties:{",
+											"      data:{",
+											"          type:\"object\",",
+											"          properties:{",
+											"              page: {",
+											"                  type: \"object\",",
+											"                  properties: {",
+											"                      totalCount:{",
+											"                          type: \"integer\"",
+											"                      },",
+											"                      beneCurrencies:{",
+											"                          type: \"array\",",
+											"                          items: {",
+											"                              type: \"integer\"",
+											"                          }",
+											"                      },",
+											"                      accessAdd: {",
+											"                          type: \"boolean\"",
+											"                      }",
+											"                  }",
+											"              }",
+											"          }",
+											"      }",
+											"  }",
+											"};",
+											"",
+											"var data = pm.response.json();",
+											"",
+											"",
+											"pm.test('Schema is valid', function() {",
+											"  pm.expect(tv4.validate(data, schema)).to.be.true;",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 0560ADB4930DAA9EADBA8D81A45C7DDF",
+										"type": "text"
+									},
+									{
+										"key": "X-API-client",
+										"value": "mobile",
+										"type": "text"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "{{url}}/{{api}}/beneficiaries",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"{{api}}",
+										"beneficiaries"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "info/common",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "6a099f12-4205-49db-b893-77e43f184505",
+										"exec": [
+											"var schema = {",
+											"  type: \"object\",",
+											"  properties: {",
+											"      data: {",
+											"          type: \"object\",",
+											"          properties: {",
+											"              siteCommon: {",
+											"                  type: \"object\",",
+											"                  properties: {",
+											"                      version: {",
+											"                          type: \"object\",",
+											"                          properties: {",
+											"                              major: {",
+											"                                  type: \"integer\"",
+											"                              },",
+											"                              minor: {",
+											"                                  type: \"integer\"",
+											"                              },",
+											"                              patch: {",
+											"                                  type: \"integer\"",
+											"                              }",
+											"                          }",
+											"                      }",
+											"                  }",
+											"              },",
+											"              page: {",
+											"                  type: \"null\"",
+											"              }",
+											"          }",
+											"      }",
+											"  }",
+											"};",
+											"",
+											"var data = pm.response.json();",
+											"",
+											"",
+											"pm.test('Schema is valid', function() {",
+											"  pm.expect(tv4.validate(data, schema)).to.be.true;",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 0560ADB4930DAA9EADBA8D81A45C7DDF",
+										"type": "text"
+									},
+									{
+										"key": "X-API-client",
+										"value": "mobile",
+										"type": "text"
+									},
+									{
+										"key": "X-Page-Id",
+										"value": "{{X-Page-Id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "_getSiteCommon",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "_getCommon",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "_getUserCommon",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "_getAdminCommon",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "_getPage",
+											"value": "true",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/{{api}}/info/common",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"{{api}}",
+										"info",
+										"common"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "info/getWizardReferrers",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d20fffe7-e70b-495d-92cb-c35b74570771",
+										"exec": [
+											"var schema = {type: 'object', properties: {data:{type: 'object', properties: {referrers:{type: 'array', items:{type: 'object', properties: {id:{type: 'string'},name:{type: 'string'},page:{type: 'string'},action:{type: 'string'},}}},}},}};",
+											"",
+											"var data = pm.response.json();",
+											"",
+											"",
+											"pm.test('Schema is valid', function() {",
+											"  pm.expect(tv4.validate(data, schema)).to.be.true;",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer 0560ADB4930DAA9EADBA8D81A45C7DDF"
+									},
+									{
+										"key": "X-API-client",
+										"type": "text",
+										"value": "mobile"
+									},
+									{
+										"key": "X-Page-Id",
+										"value": "{{X-Page-Id}}",
+										"type": "text"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "{{url}}/{{api}}/info/getWizardReferrers",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"{{api}}",
+										"info",
+										"getWizardReferrers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "beneficiaries/getList  GetCompanyName",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "99bcbed4-baad-4b0c-92b8-39a4a18647ab",
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"",
+											"if(jsonData.data.rows.length > 0){",
+											"    pm.environment.set(\"companyName\", jsonData.data.rows[0].nickname);",
+											"}else{",
+											"    pm.environment.set(\"companyName\",\"\");",
+											"}    ",
+											"",
+											"pm.test(\"Work limit\", function(){",
+											"   if(jsonData.data.rows.length > 3){",
+											"       throw \"error\";",
+											"   } ",
+											"});",
+											"",
+											"var schema = {",
+											"  type: \"object\",",
+											"  properties: {",
+											"      data: {",
+											"          type: \"object\",",
+											"          properties: {",
+											"              rows: {",
+											"                  type:\"array\",",
+											"                  items: {",
+											"                      type:\"object\",",
+											"                      properties:{",
+											"                          id:{",
+											"                              type: \"string\"",
+											"                          },",
+											"                          nickname:{",
+											"                              type: \"string\"",
+											"                          },",
+											"                          email:{",
+											"                              type:\"string\"",
+											"                          },",
+											"                          currencyCode:{",
+											"                              type: \"string\"",
+											"                          },",
+											"                          currencyId: {",
+											"                              type: \"string\"",
+											"                          },",
+											"                          bankName: {",
+											"                              type: \"string\"",
+											"                          },",
+											"                          accountNmber: {",
+											"                              type: \"string\"",
+											"                          },",
+											"                          routing: {",
+											"                              type: \"string\"",
+											"                          },",
+											"                          bankCuntryCode:{",
+											"                              type:\"string\"",
+											"                          },",
+											"                          bankCity:{",
+											"                              type:\"string\"",
+											"                          },",
+											"                          bankAddress:{",
+											"                              type:\"string\"",
+											"                          },",
+											"                          purposeId:{",
+											"                              type:\"string\"",
+											"                          },",
+											"                          purposeDescription: {",
+											"                              type:\"string\"",
+											"                          }",
+											"                      }",
+											"                  }",
+											"              },",
+											"              total: {",
+											"                  type:\"integer\"",
+											"              }",
+											"          }",
+											"      }",
+											"  }",
+											"};",
+											"",
+											"var data = pm.response.json();",
+											"",
+											"",
+											"pm.test('Schema is valid', function() {",
+											"  pm.expect(tv4.validate(data, schema)).to.be.true;",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer 0560ADB4930DAA9EADBA8D81A45C7DDF"
+									},
+									{
+										"key": "X-API-client",
+										"type": "text",
+										"value": "mobile"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "sort",
+											"value": "nickname",
+											"type": "text"
+										},
+										{
+											"key": "dir",
+											"value": "asc",
+											"type": "text"
+										},
+										{
+											"key": "limit",
+											"value": "3",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/{{api}}/beneficiaries/getList",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"{{api}}",
+										"beneficiaries",
+										"getList"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "beneficiaries/getList",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "99bcbed4-baad-4b0c-92b8-39a4a18647ab",
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"",
+											"if(jsonData.data.rows.length > 0){",
+											"    pm.environment.set(\"beneId\", jsonData.data.rows[0].id);",
+											"}    ",
+											"    ",
+											"pm.test(\"Availability companyName\", function () {",
+											"    if(pm.environment.get(\"companyName\") != \"\")",
+											"        pm.expect(jsonData.data.rows[0].nickname).to.eql(pm.environment.get(\"companyName\"));",
+											"});",
+											"",
+											"",
+											"var schema = {",
+											"  type: \"object\",",
+											"  properties: {",
+											"      data: {",
+											"          type: \"object\",",
+											"          properties: {",
+											"              rows: {",
+											"                  type:\"array\",",
+											"                  items: {",
+											"                      type:\"object\",",
+											"                      properties:{",
+											"                          id:{",
+											"                              type: \"string\"",
+											"                          },",
+											"                          nickname:{",
+											"                              type: \"string\"",
+											"                          },",
+											"                          email:{",
+											"                              type:\"string\"",
+											"                          },",
+											"                          currencyCode:{",
+											"                              type: \"string\"",
+											"                          },",
+											"                          currencyId: {",
+											"                              type: \"string\"",
+											"                          },",
+											"                          bankName: {",
+											"                              type: \"string\"",
+											"                          },",
+											"                          accountNmber: {",
+											"                              type: \"string\"",
+											"                          },",
+											"                          routing: {",
+											"                              type: \"string\"",
+											"                          },",
+											"                          bankCuntryCode:{",
+											"                              type:\"string\"",
+											"                          },",
+											"                          bankCity:{",
+											"                              type:\"string\"",
+											"                          },",
+											"                          bankAddress:{",
+											"                              type:\"string\"",
+											"                          },",
+											"                          purposeId:{",
+											"                              type:\"string\"",
+											"                          },",
+											"                          purposeDescription: {",
+											"                              type:\"string\"",
+											"                          }",
+											"                      }",
+											"                  }",
+											"              },",
+											"              total: {",
+											"                  type:\"integer\"",
+											"              }",
+											"          }",
+											"      }",
+											"  }",
+											"};",
+											"",
+											"var data = pm.response.json();",
+											"",
+											"",
+											"pm.test('Schema is valid', function() {",
+											"  pm.expect(tv4.validate(data, schema)).to.be.true;",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 0560ADB4930DAA9EADBA8D81A45C7DDF",
+										"type": "text"
+									},
+									{
+										"key": "X-API-client",
+										"value": "mobile",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "search",
+											"value": "{{companyName}}",
+											"type": "text"
+										},
+										{
+											"key": "searchType",
+											"value": "default",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/{{api}}/beneficiaries/getList",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"{{api}}",
+										"beneficiaries",
+										"getList"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "beneficiaries/view/beneId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c0dffac3-112f-49b1-8350-916f954591b7",
+										"exec": [
+											"var data = pm.response.json();",
+											"",
+											"var schema = {",
+											"  type:\"object\",",
+											"  properties:{",
+											"      data: {",
+											"          type:\"object\",",
+											"          properties:{",
+											"              page:{",
+											"                  type:\"object\",",
+											"                  properties:{",
+											"                    bene:{",
+											"                      type:\"object\",",
+											"                      properties:{",
+											"                          isOutgoing:{",
+											"                              type: \"string\"",
+											"                          },",
+											"                          entityId:{",
+											"                              type: \"string\"",
+											"                          },",
+											"                          currencyId:{",
+											"                              type: \"string\"",
+											"                          },",
+											"                          name:{",
+											"                              type: \"string\"",
+											"                          },",
+											"                          nickname:{",
+											"                              type: \"string\"",
+											"                          },",
+											"                          countryId:{",
+											"                              type: \"string\"",
+											"                          },",
+											"                          address1:{",
+											"                              type: \"string\"",
+											"                          },",
+											"                          address2:{",
+											"                              type: \"string\"",
+											"                          },",
+											"                          city:{",
+											"                              type: \"string\"",
+											"                          },",
+											"                          province:{",
+											"                              type: \"string\"",
+											"                          },",
+											"                          postal:{",
+											"                              type: \"string\"",
+											"                          },",
+											"                          email:{",
+											"                              type: \"string\"",
+											"                          },",
+											"                          purposeId:{",
+											"                              type: \"string\"",
+											"                          },",
+											"                          purposeDescription:{",
+											"                              type: \"string\"",
+											"                          },",
+											"                          mainBankId:{",
+											"                              type: \"string\"",
+											"                          },",
+											"                          interBankId:{",
+											"                              type: \"null\"",
+											"                          },",
+											"                          furtherName:{",
+											"                              type: \"string\"",
+											"                          },",
+											"                          furtherAccountNumber:{",
+											"                              type: \"string\"",
+											"                          },",
+											"                          id:{",
+											"                              type: \"string\"",
+											"                          },",
+											"                          ",
+											"                          mainBank:{",
+											"                              type: \"object\",",
+											"                              properties:{",
+											"                                  name:{",
+											"                                      type:\"string\"",
+											"                                  },",
+											"                                  countryId:{",
+											"                                      type:\"string\"",
+											"                                  },",
+											"                                  city:{",
+											"                                      type:\"string\"",
+											"                                  },",
+											"                                  province:{",
+											"                                      type:\"string\"",
+											"                                  },",
+											"                                  address1:{",
+											"                                      type:\"string\"",
+											"                                  },",
+											"                                  address2:{",
+											"                                      type:\"string\"",
+											"                                  },",
+											"                                  postCode:{",
+											"                                      type:\"string\"",
+											"                                  },",
+											"                                  instructions:{",
+											"                                      type:\"string\"",
+											"                                  },",
+											"                                  routingTypeId:{",
+											"                                      type:\"string\"",
+											"                                  },",
+											"                                  routingCodeType:{",
+											"                                      type:\"string\"",
+											"                                  },",
+											"                                  routingCode:{",
+											"                                      type:\"string\"",
+											"                                  },",
+											"                                  bankCode:{",
+											"                                      type:\"string\"",
+											"                                  },",
+											"                                  accountNumber:{",
+											"                                      type:\"string\"",
+											"                                  },",
+											"                                  accountNumberType:{",
+											"                                      type:\"string\"",
+											"                                  },",
+											"                                 ",
+											"                                  id:{",
+											"                                      type:\"string\"",
+											"                                  },",
+											"                                  countryName:{",
+											"                                      type:\"string\"",
+											"                                  }",
+											"                              }",
+											"                          },",
+											"                          interBank:{",
+											"                               type: \"array\"",
+											"                              ",
+											"                          },",
+											"                          purposeName:{",
+											"                              type: \"string\"",
+											"                          },",
+											"                          countryName:{",
+											"                              type: \"string\"",
+											"                          }",
+											"                      }",
+											"                    },",
+											"                    editError:{",
+											"                        type:\"string\"",
+											"                    }",
+											"                }",
+											"              }",
+											"          }",
+											"      }",
+											"  }",
+											"  ",
+											"};",
+											"",
+											"",
+											"pm.test('Schema is valid', function() {",
+											"  pm.expect(tv4.validate(data, schema)).to.be.true;",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer 0560ADB4930DAA9EADBA8D81A45C7DDF"
+									},
+									{
+										"key": "X-API-client",
+										"type": "text",
+										"value": "mobile"
+									},
+									{
+										"key": "X-Page-Id",
+										"value": "{{X-Page-Id}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/{{api}}/beneficiaries/view/{{beneId}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"{{api}}",
+										"beneficiaries",
+										"view",
+										"{{beneId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "beneficiaries/getBank",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a03920ae-a054-438f-8238-969789c913f8",
+										"exec": [
+											"var schema = {",
+											"  type: \"object\",",
+											"  properties:{",
+											"      data:{",
+											"          type:\"object\",",
+											"          properties:{",
+											"              name:{",
+											"                  type:\"string\"",
+											"              },",
+											"              country:{",
+											"                  type:\"string\"",
+											"              },",
+											"              city:{",
+											"                  type:\"string\"",
+											"              },",
+											"              postCode:{",
+											"                  type:\"string\"",
+											"              },",
+											"              swift:{",
+											"                  type:\"string\"",
+											"              },",
+											"              aba:{",
+											"                  type:\"boolean\"",
+											"              },",
+											"              bsb:{",
+											"                  type:\"boolean\"",
+											"              },",
+											"              sortCode:{",
+											"                  type:\"boolean\"",
+											"              },",
+											"              transitCode:{",
+											"                  type:\"boolean\"",
+											"              },",
+											"              routingTypeId:{",
+											"                  type:\"string\"",
+											"              },",
+											"              routingCodeType:{",
+											"                  type:\"string\"",
+											"              },",
+											"              accountNumberType:{",
+											"                  type:\"string\"",
+											"              },",
+											"              routingCode:{",
+											"                  type:\"string\"",
+											"              },",
+											"              bankCode:{",
+											"                  type:\"string\"",
+											"              },",
+											"              countryId:{",
+											"                  type:\"integer\"",
+											"              },",
+											"              address1:{",
+											"                  type:\"string\"",
+											"              },",
+											"              address2:{",
+											"                  type:\"string\"",
+											"              },",
+											"              province:{",
+											"                  type:\"string\"",
+											"              },",
+											"              type:{",
+											"                  type:\"string\"",
+											"              },",
+											"              key:{",
+											"                  type:\"string\"",
+											"              },",
+											"          }",
+											"      }",
+											"  }",
+											"};",
+											"",
+											"var data = pm.response.json();",
+											"",
+											"",
+											"pm.test('Schema is valid', function() {",
+											"  pm.expect(tv4.validate(data, schema)).to.be.true;",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 0560ADB4930DAA9EADBA8D81A45C7DDF",
+										"type": "text"
+									},
+									{
+										"key": "X-API-client",
+										"value": "mobile",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"accountNumber\": \"FR7612406000238000666516439\",\n\"accountNumberType\": \"iban\",\n\"type\": \"main\",\n\"countryId\": 107,\n\"currencyCode\": \"EUR\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}/{{api}}/beneficiaries/getBank",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"{{api}}",
+										"beneficiaries",
+										"getBank"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "terms/index",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9a5aafc5-7d5d-4b1f-a91d-b00b4f80e597",
+										"exec": [
+											"var schema = {",
+											"  type: \"object\",",
+											"  properties:{",
+											"      data:{",
+											"          type:\"object\",",
+											"          properties:{",
+											"              page:{",
+											"                  type:\"object\",",
+											"                  properties:{",
+											"                      needAccept:{",
+											"                          type:\"boolean\"",
+											"                      },",
+											"                      terms:{",
+											"                          type:\"string\"",
+											"                      }",
+											"                  }",
+											"              }",
+											"          }",
+											"      }",
+											"  }",
+											"  ",
+											"};",
+											"",
+											"var data = pm.response.json();",
+											"",
+											"",
+											"pm.test('Schema is valid', function() {",
+											"  pm.expect(tv4.validate(data, schema)).to.be.true;",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 0560ADB4930DAA9EADBA8D81A45C7DDF",
+										"type": "text"
+									},
+									{
+										"key": "X-API-client",
+										"value": "mobile",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/{{api}}/terms/index",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"{{api}}",
+										"terms",
+										"index"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "reports/holding/getList GetDealNumber",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "297fe56c-f2f0-40ca-8795-6481e5780126",
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"",
+											"if(jsonData.data.rows.length > 0){",
+											"    pm.environment.set(\"dealNumber\", jsonData.data.rows[0].dealNumber);",
+											"}else{",
+											"    pm.environment.set(\"dealNumber\",\"\");",
+											"}",
+											"",
+											"console.log(jsonData.data.rows.length);",
+											"",
+											"pm.test(\"Work limit\", function(){",
+											"   if(jsonData.data.rows.length > 3){",
+											"       throw \"error\";",
+											"   } ",
+											"});",
+											"",
+											"var schema = {",
+											"  type:\"object\",",
+											"  properties:{",
+											"      data:{",
+											"          type:\"object\",",
+											"          properties:{",
+											"              rows:{",
+											"                  type:\"array\",",
+											"                  items:{",
+											"                      type:\"object\",",
+											"                      properties:{",
+											"                          dealNumber:{",
+											"                              type:\"string\"",
+											"                          },",
+											"                          entryDate:{",
+											"                              type:\"string\"",
+											"                          },",
+											"                          valueDate:{",
+											"                              type:\"string\"",
+											"                          },",
+											"                          description:{",
+											"                              type:\"string\"",
+											"                          },",
+											"                          isPaid:{",
+											"                              type:\"string\"",
+											"                          },",
+											"                          currencyCode:{",
+											"                              type:\"string\"",
+											"                          },",
+											"                         ",
+											"                          withdrawal:{",
+											"                              type:\"string\"",
+											"                          },",
+											"                          balance:{",
+											"                              type:\"string\"",
+											"                          },",
+											"                      }",
+											"                  }",
+											"              },",
+											"              total:{",
+											"                  type:\"integer\"",
+											"              },",
+											"              rangeinfo:{",
+											"                  type:\"object\",",
+											"                  properties:{",
+											"                      tsMin:{",
+											"                          type:\"string\"",
+											"                      },",
+											"                      tsMax:{",
+											"                          type:\"string\"",
+											"                      },",
+											"                      openBalance:{",
+											"                          type:\"string\"",
+											"                      },",
+											"                      closeBalance:{",
+											"                          type:\"string\"",
+											"                      }",
+											"                  }",
+											"              }",
+											"          }",
+											"      }",
+											"  }",
+											"  ",
+											"};",
+											"",
+											"var data = pm.response.json();",
+											"",
+											"",
+											"pm.test('Schema is valid', function() {",
+											"  pm.expect(tv4.validate(data, schema)).to.be.true;",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer 0560ADB4930DAA9EADBA8D81A45C7DDF"
+									},
+									{
+										"key": "X-API-client",
+										"type": "text",
+										"value": "mobile"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "sort",
+											"value": "dealNumber",
+											"type": "text"
+										},
+										{
+											"key": "dir",
+											"value": "desc",
+											"type": "text"
+										},
+										{
+											"key": "limit",
+											"value": "3",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/{{api}}/reports/holding/getList",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"{{api}}",
+										"reports",
+										"holding",
+										"getList"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "reports/holding/getList",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "297fe56c-f2f0-40ca-8795-6481e5780126",
+										"exec": [
+											"",
+											"pm.test(\"Availability withdrawal\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    if(pm.environment.get(\"dealNumber\") != \"\")",
+											"        pm.expect(jsonData.data.rows[0].dealNumber).to.eql(pm.environment.get(\"dealNumber\"));",
+											"});",
+											"",
+											"",
+											"",
+											"var schema = {",
+											"  type:\"object\",",
+											"  properties:{",
+											"      data:{",
+											"          type:\"object\",",
+											"          properties:{",
+											"              rows:{",
+											"                  type:\"array\",",
+											"                  items:{",
+											"                      type:\"object\",",
+											"                      properties:{",
+											"                          dealNumber:{",
+											"                              type:\"string\"",
+											"                          },",
+											"                          entryDate:{",
+											"                              type:\"string\"",
+											"                          },",
+											"                          valueDate:{",
+											"                              type:\"string\"",
+											"                          },",
+											"                          description:{",
+											"                              type:\"string\"",
+											"                          },",
+											"                          isPaid:{",
+											"                              type:\"string\"",
+											"                          },",
+											"                          currencyCode:{",
+											"                              type:\"string\"",
+											"                          },",
+											"                         ",
+											"                          withdrawal:{",
+											"                              type:\"string\"",
+											"                          },",
+											"                          balance:{",
+											"                              type:\"string\"",
+											"                          },",
+											"                      }",
+											"                  }",
+											"              },",
+											"              total:{",
+											"                  type:\"integer\"",
+											"              },",
+											"              rangeinfo:{",
+											"                  type:\"object\",",
+											"                  properties:{",
+											"                      tsMin:{",
+											"                          type:\"string\"",
+											"                      },",
+											"                      tsMax:{",
+											"                          type:\"string\"",
+											"                      },",
+											"                      openBalance:{",
+											"                          type:\"string\"",
+											"                      },",
+											"                      closeBalance:{",
+											"                          type:\"string\"",
+											"                      }",
+											"                  }",
+											"              }",
+											"          }",
+											"      }",
+											"  }",
+											"  ",
+											"};",
+											"",
+											"var data = pm.response.json();",
+											"",
+											"",
+											"pm.test('Schema is valid', function() {",
+											"  pm.expect(tv4.validate(data, schema)).to.be.true;",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 0560ADB4930DAA9EADBA8D81A45C7DDF",
+										"type": "text"
+									},
+									{
+										"key": "X-API-client",
+										"value": "mobile",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "search",
+											"value": "{{dealNumber}}",
+											"type": "text"
+										},
+										{
+											"key": "transactionType",
+											"value": "dealNumber",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/{{api}}/reports/holding/getList",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"{{api}}",
+										"reports",
+										"holding",
+										"getList"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "reports/holding",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "6855f7e9-0d6f-461d-a6fc-62f0b0398b95",
+										"exec": [
+											"var schema = {",
+											"  type:\"object\",",
+											"  properties:{",
+											"      data:{",
+											"          type: \"object\",",
+											"          properties:{",
+											"              page:{",
+											"                  type: \"object\",",
+											"                  properties:{",
+											"                      accounts:{",
+											"                          type:\"array\",",
+											"                          items:{",
+											"                              type:\"object\",",
+											"                              properties:{",
+											"                                  ccyid:{",
+											"                                      type:\"integer\"",
+											"                                  },",
+											"                                  amount:{",
+											"                                      type:\"number\"",
+											"                                  }",
+											"                              }",
+											"                          }",
+											"                      },",
+											"                      showQuickQuoteBtns:{",
+											"                          type:\"boolean\"",
+											"                      }",
+											"                  }",
+											"              }",
+											"          }",
+											"      }",
+											"  }",
+											"};",
+											"",
+											"var data = pm.response.json();",
+											"",
+											"",
+											"pm.test('Schema is valid', function() {",
+											"  pm.expect(tv4.validate(data, schema)).to.be.true;",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 0560ADB4930DAA9EADBA8D81A45C7DDF",
+										"type": "text"
+									},
+									{
+										"key": "X-API-client",
+										"value": "mobile",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/{{api}}/reports/holding",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"{{api}}",
+										"reports",
+										"holding"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "dashboard/getAllOrders",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d0728119-2ba6-4355-bf02-5472a2e748ce",
+										"exec": [
+											"var schema = {",
+											"  type: \"object\",",
+											"  properties:{",
+											"      data:{",
+											"          type:\"object\",",
+											"          properties:{",
+											"              orders:{",
+											"                  type:\"object\",",
+											"                  properties:{",
+											"                      rows:{",
+											"                          type:\"array\",",
+											"                          items:{",
+											"                              type:\"object\",",
+											"                              properties:{",
+											"                                  amount:{",
+											"                                      type:\"string\"",
+											"                                  },",
+											"                                  rate:{",
+											"                                      type:\"string\"",
+											"                                  },",
+											"                                  currencyId:{",
+											"                                      type:\"string\"",
+											"                                  }",
+											"                              }",
+											"                          }",
+											"                      },",
+											"                      total:{",
+											"                          type:\"integer\"",
+											"                      }",
+											"                  }",
+											"              }",
+											"          }",
+											"      }",
+											"  }",
+											"};",
+											"",
+											"var data = pm.response.json();",
+											"",
+											"",
+											"pm.test('Schema is valid', function() {",
+											"  pm.expect(tv4.validate(data, schema)).to.be.true;",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 0560ADB4930DAA9EADBA8D81A45C7DDF",
+										"type": "text"
+									},
+									{
+										"key": "X-API-client",
+										"value": "mobile",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/{{api}}/dashboard/getAllOrders",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"{{api}}",
+										"dashboard",
+										"getAllOrders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "dashboard/getAllForwards",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d0728119-2ba6-4355-bf02-5472a2e748ce",
+										"exec": [
+											"var schema = {",
+											"  type: \"object\",",
+											"  properties:{",
+											"      data:{",
+											"          type:\"object\",",
+											"          properties:{",
+											"              forwards:{",
+											"                  type:\"object\",",
+											"                  properties:{",
+											"                      rows:{",
+											"                          type:\"array\",",
+											"                          items:{",
+											"                              type:\"object\",",
+											"                              properties:{",
+											"                                  amount:{",
+											"                                      type:\"string\"",
+											"                                  },",
+											"                                  valueDate:{",
+											"                                      type:\"integer\"",
+											"                                  },",
+											"                                  currencyId:{",
+											"                                      type:\"integer\"",
+											"                                  }",
+											"                              }",
+											"                          }",
+											"                      },",
+											"                      total:{",
+											"                          type:\"integer\"",
+											"                      }",
+											"                  }",
+											"              }",
+											"          }",
+											"      }",
+											"  }",
+											"};",
+											"",
+											"var data = pm.response.json();",
+											"",
+											"",
+											"pm.test('Schema is valid', function() {",
+											"  pm.expect(tv4.validate(data, schema)).to.be.true;",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 0560ADB4930DAA9EADBA8D81A45C7DDF",
+										"type": "text"
+									},
+									{
+										"key": "X-API-client",
+										"value": "mobile",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/{{api}}/dashboard/getAllForwards",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"{{api}}",
+										"dashboard",
+										"getAllForwards"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "dashboard/getOrders",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d0728119-2ba6-4355-bf02-5472a2e748ce",
+										"exec": [
+											"var schema = {",
+											"  type: \"object\",",
+											"  properties:{",
+											"      data:{",
+											"          type:\"object\",",
+											"          properties:{",
+											"              orders:{",
+											"                  type:\"object\",",
+											"                  properties:{",
+											"                      rows:{",
+											"                          type:\"array\",",
+											"                          items:{",
+											"                              type:\"object\",",
+											"                              properties:{",
+											"                                  amount:{",
+											"                                      type:\"string\"",
+											"                                  },",
+											"                                  valueDate:{",
+											"                                      type:\"string\"",
+											"                                  },",
+											"                                  currencyId:{",
+											"                                      type:\"string\"",
+											"                                  }",
+											"                              }",
+											"                          }",
+											"                      },",
+											"                      total:{",
+											"                          type:\"integer\"",
+											"                      }",
+											"                  }",
+											"              },",
+											"              tooltip:{",
+											"                  type:\"string\"",
+											"              },",
+											"              placeholder:{",
+											"                  type:\"string\"",
+											"              }",
+											"          }",
+											"      }",
+											"  }",
+											"};",
+											"",
+											"var data = pm.response.json();",
+											"",
+											"",
+											"pm.test('Schema is valid', function() {",
+											"  pm.expect(tv4.validate(data, schema)).to.be.true;",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 0560ADB4930DAA9EADBA8D81A45C7DDF",
+										"type": "text"
+									},
+									{
+										"key": "X-API-client",
+										"value": "mobile",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/{{api}}/dashboard/getOrders",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"{{api}}",
+										"dashboard",
+										"getOrders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "dashboard/getHoldingAccounts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d0728119-2ba6-4355-bf02-5472a2e748ce",
+										"exec": [
+											"var schema = {",
+											"  type: \"object\",",
+											"  properties:{",
+											"      data:{",
+											"          type:\"object\",",
+											"          properties:{",
+											"              accounts:{",
+											"                  type:\"array\",",
+											"                  items:{",
+											"                      type:\"object\",",
+											"                      properties:{",
+											"                          currencyCode:{",
+											"                              type:\"string\",",
+											"                          },",
+											"                          amount:{",
+											"                              type:\"number\"",
+											"                          }",
+											"                      }",
+											"                  }",
+											"              },",
+											"              showMore:{",
+											"                  type:\"boolean\"",
+											"              },",
+											"              tooltip:{",
+											"                  type:\"string\"",
+											"              },",
+											"              placeholder:{",
+											"                  type:\"string\"",
+											"              }",
+											"          }",
+											"      }",
+											"  }",
+											"};",
+											"",
+											"var data = pm.response.json();",
+											"",
+											"",
+											"pm.test('Schema is valid', function() {",
+											"  pm.expect(tv4.validate(data, schema)).to.be.true;",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 0560ADB4930DAA9EADBA8D81A45C7DDF",
+										"type": "text"
+									},
+									{
+										"key": "X-API-client",
+										"value": "mobile",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/{{api}}/dashboard/getHoldingAccounts",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"{{api}}",
+										"dashboard",
+										"getHoldingAccounts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "dashboard/getForwards",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d0728119-2ba6-4355-bf02-5472a2e748ce",
+										"exec": [
+											"var schema = {",
+											"  type: \"object\",",
+											"  properties:{",
+											"      data:{",
+											"          type:\"object\",",
+											"          properties:{",
+											"              forwards:{",
+											"                  type:\"object\",",
+											"                  properties:{",
+											"                      rows:{",
+											"                          type:\"array\",",
+											"                          items:{",
+											"                              type:\"object\",",
+											"                              properties:{",
+											"                                  amount:{",
+											"                                      type:\"string\"",
+											"                                  },",
+											"                                  valueDate:{",
+											"                                      type:\"integer\"",
+											"                                  },",
+											"                                  currencyId:{",
+											"                                      type:\"integer\"",
+											"                                  }",
+											"                              }",
+											"                          }",
+											"                      },",
+											"                      total:{",
+											"                          type:\"integer\"",
+											"                      }",
+											"                  }",
+											"              },",
+											"              tooltip:{",
+											"                  type:\"string\"",
+											"              }",
+											"          }",
+											"      }",
+											"  }",
+											"};",
+											"",
+											"var data = pm.response.json();",
+											"",
+											"",
+											"pm.test('Schema is valid', function() {",
+											"  pm.expect(tv4.validate(data, schema)).to.be.true;",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 0560ADB4930DAA9EADBA8D81A45C7DDF",
+										"type": "text"
+									},
+									{
+										"key": "X-API-client",
+										"value": "mobile",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/{{api}}/dashboard/getForwards",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"{{api}}",
+										"dashboard",
+										"getForwards"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "dashboard/index",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d0728119-2ba6-4355-bf02-5472a2e748ce",
+										"exec": [
+											"var schema = {type:'object',properties:{data:{type:'object',properties:{page:{type:'object',properties:{beneCurrencies:{type:'array', items:{type:'number'}},newsItems:{type:'array', items:{type:'object',properties:{title:{type:'string'},link:{type:'string'},descriptionText:{type:'string'},publishedOn:{type:'string'},}}},doYouKnow:{type:'string'},accessQuickQuote:{type:'boolean'},accessMakeAPayment:{type:'boolean'},accessPaymentTracker:{type:'boolean'},forwardsCanCreate:{type:'boolean'},accessApprovals:{type:'boolean'},paymentsToApproveTooltip:{type:'string'},defaultChartsPeriod:{type:'string'},nIncompleteDeals:{type:'number'},unapprovedData:{type:'object',properties:{singleDealId:{type:'number'},nPayments:{type:'number'},nCanApprove:{type:'number'},payments:{type:'array', items:{type:'object',properties:{dealId:{type:'string'},dealNumber:{type:'string'},dealNumberDigits:{type:'string'},sortIndex:{type:'string'},currencyToPayId:{type:'string'},amount:{type:'string'},valueDate:{type:'string'},entryDate:{type:'string'},beneId:{type:'string'},isAccount:{type:'string'},beneNickname:{type:'string'},isWorthOf:{type:'string'},currencyIHaveId:{type:'string'},userApprovedLevels:{type:'array', items:{type:'number'}},maxApprovalLevel:{type:'number'},approvalLevel:{type:'number'},canApprove:{type:'boolean'},quoteAllowed:{type:'boolean'},canQuote:{type:'boolean'},}}},}},}},}},}}",
+											"",
+											"var data = pm.response.json();",
+											"",
+											"",
+											"pm.test('Schema is valid', function() {",
+											"  pm.expect(tv4.validate(data, schema)).to.be.true;",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/javascript",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 0560ADB4930DAA9EADBA8D81A45C7DDF",
+										"type": "text"
+									},
+									{
+										"key": "X-API-client",
+										"value": "mobile",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/{{api}}/dashboard/index",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"{{api}}",
+										"dashboard",
+										"index"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "В этом тесте я пробегусь по всем классам, которые возвращают какую либо иформацию",
+					"_postman_isSubFolder": true
+				}
+			],
+			"description": "Папка с тестами"
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "magic",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "fx",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "48e71e8e-09f9-4200-924b-4778a91a7989",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "41890278-5f80-4214-8e36-5f9342cab342",
+				"type": "text/javascript",
+				"exec": [
+					"const jsonData = pm.response.json();",
+					"",
+					"pm.test(\"Status code is 200\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});",
+					"",
+					"pm.test('Has data', function() {",
+					"  pm.expect(jsonData).to.have.property('data');",
+					"});",
+					"",
+					"pm.test('Has data', function() {",
+					"  pm.expect(jsonData.data).not.have.property('err');",
+					"});"
+				]
+			}
+		}
+	]
+}

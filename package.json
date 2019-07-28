@@ -1,0 +1,16 @@
+{
+  "name": "newman",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "newman": "^4.5.1",
+    "newman-reporter-html": "^1.0.3",
+    "newman-reporter-htmlextra": "^1.8.5",
+    "postman": "^0.2.0",
+    "postman-request": "^2.88.1-postman.12",
+    "postman-runtime": "^7.15.2",
+    "webpack": "^4.38.0",
+    "webpack-cli": "^3.3.6"
+  }
+}

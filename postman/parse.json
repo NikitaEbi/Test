@@ -1,0 +1,100 @@
+{
+    "data": {
+        "page": {
+            "beneCurrencies": [
+                1,
+                137,
+                44,
+                90,
+                42,
+                64,
+                148,
+                116,
+                28,
+                9
+            ],
+            "newsItems": [
+                {
+                    "title": "Dollar Gains After ECB But for How Long?",
+                    "link": "https://www.tempusfx.com/daily-market-update/dollar-gains-after-ecb-but-for-how-long/",
+                    "descriptionText": "The post Dollar Gains After ECB But for How Long? appeared first on Tempus.",
+                    "publishedOn": "1564063805"
+                },
+                {
+                    "title": "U.S. Dollar mostly flat ahead of busy end of week",
+                    "link": "https://www.tempusfx.com/daily-market-update/u-s-dollar-mostly-flat-ahead-of-busy-end-of-week/",
+                    "descriptionText": "The post U.S. Dollar mostly flat ahead of busy end of week appeared first on Tempus.",
+                    "publishedOn": "1563976052"
+                },
+                {
+                    "title": "Half-Year Impressions: BRL, INR & CNY",
+                    "link": "https://www.tempusfx.com/insight/half-year-impressions-brl-inr-cny/",
+                    "descriptionText": "The post Half-Year Impressions: BRL, INR & CNY appeared first on Tempus.",
+                    "publishedOn": "1563896611"
+                }
+            ],
+            "doYouKnow": "Tempus handles over 130 different currencies!",
+            "accessQuickQuote": false,
+            "accessMakeAPayment": true,
+            "accessPaymentTracker": true,
+            "forwardsCanCreate": true,
+            "accessApprovals": true,
+            "paymentsToApproveTooltip": "All Approvals in Process",
+            "defaultChartsPeriod": "day",
+            "nIncompleteDeals": 6,
+            "unapprovedData": {
+                "singleDealId": 0,
+                "nPayments": 80,
+                "nCanApprove": 63,
+                "payments": [
+                    {
+                        "dealId": "17545",
+                        "dealNumber": "TMP-USA-BATCHPAY-0011673",
+                        "dealNumberDigits": "0011673",
+                        "sortIndex": "0",
+                        "currencyToPayId": "137",
+                        "amount": "55.00",
+                        "valueDate": "1532318400",
+                        "entryDate": "1531979393",
+                        "beneId": "7031",
+                        "isAccount": "0",
+                        "beneNickname": "ADP Canada Co. - CAD - SWIFT",
+                        "isWorthOf": "0",
+                        "currencyIHaveId": "1",
+                        "userApprovedLevels": [
+                            0
+                        ],
+                        "maxApprovalLevel": 3,
+                        "approvalLevel": 1,
+                        "canApprove": true,
+                        "quoteAllowed": false,
+                        "canQuote": false
+                    },
+                    {
+                        "dealId": "17556",
+                        "dealNumber": "TMP-USA-BATCHPAY-0011684",
+                        "dealNumberDigits": "0011684",
+                        "sortIndex": "0",
+                        "currencyToPayId": "42",
+                        "amount": "100.00",
+                        "valueDate": "1532577600",
+                        "entryDate": "1532422312",
+                        "beneId": "7048",
+                        "isAccount": "0",
+                        "beneNickname": "Monex Europe Ltd - EUR - SWIFT",
+                        "isWorthOf": "0",
+                        "currencyIHaveId": "1",
+                        "userApprovedLevels": [
+                            0
+                        ],
+                        "maxApprovalLevel": 3,
+                        "approvalLevel": 1,
+                        "canApprove": true,
+                        "quoteAllowed": false,
+                        "canQuote": false
+                    }
+                ]
+            }
+        }
+    }
+}
